@@ -1,11 +1,333 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Portfólio Profissional | Segurança Pública</title>
+    <style>
+        /* --- Reset Básico e Variáveis --- */
+        :root {
+            --primary-color: #0e2a47; /* Azul Marinho Policial */
+            --secondary-color: #bfa15f; /* Dourado/Bege para detalhes */
+            --text-color: #333;
+            --light-bg: #f4f4f4;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        /* --- Header e Navegação --- */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* --- Seção Hero (Destaque) --- */
+        .hero {
+            background: linear-gradient(rgba(14, 42, 71, 0.9), rgba(14, 42, 71, 0.8)), url('https://images.unsplash.com/photo-1596566669299-c88f3a34493f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 10px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #d4b670;
+        }
+
+        /* --- Seções Gerais --- */
+        section {
+            padding: 4rem 0;
+        }
+
+        h2.section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto;
+        }
+
+        /* --- Sobre Mim --- */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 300px;
+            background-color: #ddd; /* Espaço para foto */
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* --- Especialidades/Serviços --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border-bottom: 4px solid var(--secondary-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* --- Galeria --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            height: 200px;
+            background-color: #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- Rodapé --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .emergency-banner {
+            background-color: #b71c1c;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* --- Responsividade --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2rem; }
+            .container { flex-direction: column; }
+            nav ul { margin-top: 15px; }
+            nav ul li { margin: 0 10px; }
+        }
+    </style>
 </head>
 <body>
-    
+
+    <div class="emergency-banner">
+        EM CASO DE EMERGÊNCIA, LIGUE 190
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="logo">Oficial [Seu Sobrenome]</div>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#atuacao">Atuação</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Servir e Proteger</h1>
+            <p>Compromisso com a segurança pública, ética e a integridade da comunidade.</p>
+            <a href="#sobre" class="btn">Conheça minha trajetória</a>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <section id="sobre">
+            <h2 class="section-title">Sobre Mim</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    </div>
+                <div class="about-text">
+                    <h3>Compromisso com a Justiça</h3>
+                    <p>Olá, sou o Oficial [Seu Nome]. Com mais de [X] anos de experiência na força policial, dediquei minha carreira a garantir a segurança e o bem-estar da nossa comunidade.</p>
+                    <br>
+                    <p>Minha trajetória é marcada por treinamento contínuo, respeito aos direitos humanos e uma abordagem proativa na resolução de conflitos e prevenção ao crime.</p>
+                    <br>
+                    <p><strong>Formação:</strong> Bacharel em [Seu Curso] pela [Universidade].</p>
+                    <p><strong>Especializações:</strong> Curso Tático, Negociação de Crises, Direito Penal.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="atuacao">
+            <h2 class="section-title">Áreas de Atuação</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">👮‍♂️</div>
+                    <h3>Patrulhamento Ostensivo</h3>
+                    <p>Atuação direta nas ruas para prevenir delitos e garantir a ordem pública através da presença constante.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>Investigação</h3>
+                    <p>Coleta de evidências, análise de fatos e procedimentos legais para a resolução de casos.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤝</div>
+                    <h3>Polícia Comunitária</h3>
+                    <p>Proximidade com o cidadão, palestras em escolas e projetos sociais para fortalecer laços.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria">
+            <h2 class="section-title">Galeria</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1551193308-417109727402?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Polícia"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1598556776373-acfa3f76903f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Viatura"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1541600122240-4cb503d22b07?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Equipamento"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contato">
+        <div class="container">
+            <h3>Entre em Contato</h3>
+            <p>Para palestras, orientações ou assuntos administrativos.</p>
+            <p style="margin-top: 10px; font-weight: bold;">email@exemplo.com</p>
+            <br>
+            <p><small>&copy; 2023 Oficial [Seu Sobrenome]. Todos os direitos reservados.</small></p>
+            <p><small>Este site é um portfólio profissional e não representa um canal oficial de denúncias.</small></p>
+        </div>
+    </footer>
+
 </body>
 </html>
